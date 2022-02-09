@@ -20,13 +20,13 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Containerfile --tag my-image-name:$(date +%s)
 
-#     - name: Log in to quay.io
-#       id: registry-quay
-#       uses: redhat-actions/podman-login@v1
-#       with:
-#         registry: quay.io
-#         username: ${{ secrets.REDHAT_USERNAME }}
-#         password: ${{ secrets.REDHAT_PASSWORD }}
+    - name: Log in to quay.io
+      id: registry-quay
+      uses: redhat-actions/podman-login@v1
+      with:
+        registry: quay.io
+        username: ${{ secrets.QUAY_USERNAME }}
+        password: ${{ secrets.QUAY_PASSWORD }}
 
 #     - name: Push To quay.io
 #       id: push-to-quay
