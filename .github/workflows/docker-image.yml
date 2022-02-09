@@ -1,0 +1,43 @@
+name: Build and push my simple web container
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+  
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+      
+    - name: Build the Docker image
+      run: docker build . --file Containerfile --tag my-image-name:$(date +%s)
+
+#     - name: Log in to quay.io
+#       id: registry-quay
+#       uses: redhat-actions/podman-login@v1
+#       with:
+#         registry: quay.io
+#         username: ${{ secrets.REDHAT_USERNAME }}
+#         password: ${{ secrets.REDHAT_PASSWORD }}
+
+#     - name: Push To quay.io
+#       id: push-to-quay
+#       uses: redhat-actions/push-to-registry@v2
+#       with:
+#         image: ${{ inputs.EE_FOLDER_NAME }}
+#         tags: |
+#           ${{ inputs.EE_IMAGE_TAG }}
+#         registry: quay.io/${{ inputs.QUAY_USER }}/
+#         username: ${{ secrets.REDHAT_USERNAME }}
+#         password: ${{ secrets.REDHAT_PASSWORD }} 
+
+#     - name: Print image url
+#       run: echo "Image pushed to ${{ steps.push-to-quay.outputs.registry-paths }}"
