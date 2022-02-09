@@ -30,11 +30,11 @@ jobs:
 
     - name: Push To quay.io
       id: push-to-quay
-      uses: redhat-actions/push-to-registry@v2
+      uses: redhat-actions/push-to-registry@v2.5.1
       with:
         image: simple-web-container
         tags: latest
-        registry: quay.io/${{ inputs.QUAY_USER }}/
+        registry: quay.io/${{ secrets.QUAY_USER }}/
         username: ${{ secrets.REDHAT_USERNAME }}
         password: ${{ secrets.REDHAT_PASSWORD }} 
 
