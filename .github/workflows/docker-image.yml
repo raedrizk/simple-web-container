@@ -36,8 +36,8 @@ jobs:
         image: simple-web-container
         tags: latest
         registry: quay.io/rsoliman/
-        username: ${{ secrets.REDHAT_USERNAME }}
-        password: ${{ secrets.REDHAT_PASSWORD }} 
+        username: ${{ secrets.QUAY_USERNAME }}
+        password: ${{ secrets.QUAY_PASSWORD }} 
 
     - name: Print image url
       run: echo "Image pushed to ${{ steps.push-to-quay.outputs.registry-paths }}"
