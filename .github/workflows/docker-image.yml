@@ -34,7 +34,7 @@ jobs:
       with:
         image: simple-web-container
         tags: latest
-        registry: quay.io/${{ secrets.QUAY_USER }}/
+        registry: quay.io/rsoliman/
         username: ${{ secrets.REDHAT_USERNAME }}
         password: ${{ secrets.REDHAT_PASSWORD }} 
 
