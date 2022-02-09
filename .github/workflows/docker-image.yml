@@ -20,6 +20,15 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Containerfile --tag simple-web-container:latest
 
+    - name: Log in to quay.io
+      id: registry-quay
+      uses: redhat-actions/podman-login@v1
+      with:
+        registry: quay.io
+        username: ${{ secrets.QUAY_USERNAME }}
+        password: ${{ secrets.QUAY_PASSWORD }}
+
+
     - name: Push To quay.io
       id: push-to-quay
       uses: redhat-actions/push-to-registry@v2.5.1
